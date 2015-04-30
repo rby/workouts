@@ -1,3 +1,21 @@
+/**
+ * The maximum sum of a contiguous subarray, numbers could be negative
+ * but we know there's at least one positive number
+ *
+ * Solution:
+ * Use dynamic programming to compute the sum of all subarrays
+ *       █ █ █ █        given the sum from i to j
+ *       █ █ █    -     we substract the sum from i to j-1
+ *         █ █    +     Add the sum from i+1 to j-1
+ *  ----------------
+ *         █ █ █  =     w get the sum from i+1 to j
+ *
+ * @author: Ramzi Ben Yahya
+ * 10 minute to solve
+ * I wrote the code in the scala repl, building small functions to test
+ * quickly. Then I saved and edited the session in vim.
+ * Note: I think it could be done in 5 lines using memoization.
+ */
 object ArraySum {
     type Matrix = Array[Array[Int]]
     def matrix(size:Int) = new Array[Int](size).map(_ => new Array[Int](size))
@@ -38,3 +56,5 @@ object ArraySum {
         solveMatrix(m, max)
     }
 }
+// Test
+// assert solve(Array(-1, -2, 4, -1, 2, -1, 3)) == 7
